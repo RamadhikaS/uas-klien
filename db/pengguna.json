@@ -1,7 +1,6 @@
 [
   {
     "id": 1,
-    "name": "Admin Utama",
     "email": "admin@mail.com",
     "password": "123456",
     "role": "admin",
@@ -35,7 +34,6 @@
   },
   {
     "id": 2,
-    "name": "Mahasiswa Contoh",
     "email": "mahasiswa@mail.com",
     "password": "mahasiswa123",
     "role": "mahasiswa",

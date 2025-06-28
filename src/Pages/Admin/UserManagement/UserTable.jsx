@@ -1,15 +1,21 @@
 import React from 'react';
-import Button from "../../../Components/Button"; 
+import Button from "../../../Components/Button";
 
-const UserTable = ({ userList, onEditUser, canEdit }) => {
-  if (!userList || userList.length === 0) {
-    return (
-      <p className="text-center text-gray-500 my-4">Belum ada data pengguna.</p>
-    );
+const UserTable = ({ userList, onEditUser, canEdit, isLoading }) => {
+  if (isLoading && userList.length === 0) {
+    return <p className="text-center text-gray-500 my-10">Memuat data...</p>;
+  }
+  if (!isLoading && (!userList || userList.length === 0)) {
+    return <p className="text-center text-gray-500 my-4">Belum ada data pengguna atau tidak ada hasil.</p>;
   }
 
   return (
-    <div className="overflow-x-auto">
+    <div className="relative overflow-x-auto">
+      {isLoading && userList.length > 0 && (
+        <div className="absolute inset-0 bg-white bg-opacity-50 flex items-center justify-center z-10">
+          <p className="text-gray-700">Memperbarui data...</p>
+        </div>
+      )}
       <table className="min-w-full text-sm text-gray-700">
         <thead className="bg-blue-600 text-white">
           <tr>
@@ -17,7 +23,7 @@ const UserTable = ({ userList, onEditUser, canEdit }) => {
             <th className="py-3 px-4 text-left whitespace-nowrap">Nama</th>
             <th className="py-3 px-4 text-left whitespace-nowrap">Email</th>
             <th className="py-3 px-4 text-left whitespace-nowrap">Role</th>
-            {canEdit && ( 
+            {canEdit && (
               <th className="py-3 px-4 text-center whitespace-nowrap">Aksi</th>
             )}
           </tr>

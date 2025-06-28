@@ -1,27 +1,22 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { showConfirmationDialog } from '../utils/swalHelper';
-import { showInfoToast } from '../utils/toastHelper';     
+import { showInfoToast } from '../utils/toastHelper';
 import Button from './Button';
-
 import { useAuthStateContext } from '../utils/Contexts/AuthContext';
 
 const Header = () => {
   const navigate = useNavigate();
-  const { user, logout, isAuthenticated, isLoadingAuth } = useAuthStateContext(); 
+  const { user, logout, isAuthenticated, isLoadingAuth } = useAuthStateContext();
 
   const handleLogout = () => {
     showConfirmationDialog({
       title: 'Konfirmasi Logout',
       text: 'Apakah Anda yakin ingin keluar dari sesi ini?',
-      icon: 'question',
-      confirmButtonText: 'Ya, Logout',
       onConfirm: () => {
-        logout(); 
+        logout();
         showInfoToast('Anda telah berhasil logout.');
-        setTimeout(() => {
-            navigate('/');
-        }, 1000);
+        setTimeout(() => { navigate('/'); }, 1000);
       },
     });
   };
@@ -31,13 +26,13 @@ const Header = () => {
       <header className="bg-white shadow-md p-4 flex justify-between items-center">
         <h1 className="text-xl font-semibold text-gray-700">Admin Dashboard</h1>
         <div className="flex items-center space-x-4">
-          <span className="text-gray-500">Memuat user...</span>
+          <span className="text-gray-500">Memuat...</span>
         </div>
       </header>
     );
   }
 
-  const displayName = isAuthenticated && user ? user.name : 'Pengguna';
+  const displayName = isAuthenticated && user ? user.name : 'Tamu'; 
   const displayRole = isAuthenticated && user ? user.role : '';
 
   return (
@@ -45,24 +40,18 @@ const Header = () => {
       <div>
         <h1 className="text-xl font-semibold text-gray-700">Admin Dashboard</h1>
         {isAuthenticated && user && (
-             <span className="text-xs text-blue-600 font-medium uppercase">
-                (Role: {displayRole})
-             </span>
+             <span className="text-xs text-blue-600 font-medium uppercase">(Role: {displayRole})</span>
         )}
       </div>
       <div className="flex items-center space-x-4">
-        {isAuthenticated && user && ( 
+        {isAuthenticated && user && (
           <>
-            <span className="text-gray-600">Selamat datang, {displayName}!</span>
-            <Button variant="danger" onClick={handleLogout}>
-              Logout
-            </Button>
+            <span className="text-gray-600">Selamat datang, {displayName}!</span> 
+            <Button variant="danger" onClick={handleLogout}>Logout</Button>
           </>
         )}
-        {!isAuthenticated && ( 
-            <Button variant="primary" onClick={() => navigate('/')}>
-                Login
-            </Button>
+        {!isAuthenticated && (
+            <Button variant="primary" onClick={() => navigate('/')}>Login</Button>
         )}
       </div>
     </header>

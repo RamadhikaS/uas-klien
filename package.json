@@ -8,7 +8,7 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "serve": "node merge-json.cjs && json-server --watch db.json --port 3001"
+    "serve": "json-server --watch db.json --port 3001"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.0.13",
@@ -16,6 +16,7 @@
     "@tanstack/react-query-devtools": "^5.81.2",
     "autoprefixer": "^10.4.21",
     "axios": "^1.9.0",
+    "http-proxy-middleware": "^3.0.5",
     "postcss": "^8.5.5",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",

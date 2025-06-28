@@ -1,15 +1,21 @@
 import React from 'react';
 import Button from "../../../Components/Button";
 
-const MatakuliahTable = ({ matakuliahList, onEdit, onDelete }) => {
-  if (!matakuliahList || matakuliahList.length === 0) {
-    return (
-      <p className="text-center text-gray-500 my-4">Belum ada data mata kuliah.</p>
-    );
+const MatakuliahTable = ({ matakuliahList, onEdit, onDelete, canEdit, canDelete, isLoading }) => {
+  if (isLoading && matakuliahList.length === 0) {
+    return <p className="text-center text-gray-500 my-10">Memuat data...</p>;
+  }
+  if (!isLoading && (!matakuliahList || matakuliahList.length === 0)) {
+    return <p className="text-center text-gray-500 my-4">Belum ada data mata kuliah atau tidak ada hasil.</p>;
   }
 
   return (
-    <div className="overflow-x-auto">
+    <div className="relative overflow-x-auto">
+      {isLoading && matakuliahList.length > 0 && (
+        <div className="absolute inset-0 bg-white bg-opacity-50 flex items-center justify-center z-10">
+          <p className="text-gray-700">Memperbarui data...</p>
+        </div>
+      )}
       <table className="min-w-full text-sm text-gray-700">
         <thead className="bg-blue-600 text-white">
           <tr>
@@ -18,7 +24,9 @@ const MatakuliahTable = ({ matakuliahList, onEdit, onDelete }) => {
             <th className="py-3 px-4 text-center whitespace-nowrap">SKS</th>
             <th className="py-3 px-4 text-center whitespace-nowrap">Semester</th>
             <th className="py-3 px-4 text-left whitespace-nowrap">Status</th>
-            <th className="py-3 px-4 text-center whitespace-nowrap">Aksi</th>
+            {canEdit || canDelete ? (
+              <th className="py-3 px-4 text-center whitespace-nowrap">Aksi</th>
+            ) : null}
           </tr>
         </thead>
         <tbody className="bg-white divide-y divide-gray-200">
@@ -33,24 +41,20 @@ const MatakuliahTable = ({ matakuliahList, onEdit, onDelete }) => {
                   {mk.status ? 'Aktif' : 'Tidak Aktif'}
                 </span>
               </td>
-              <td className="py-3 px-4 text-center whitespace-nowrap space-x-2">
-                <Button
-                  size="sm"
-                  variant="warning"
-                  onClick={() => onEdit(mk)}
-                  className="text-xs"
-                >
-                  Edit
-                </Button>
-                <Button
-                  size="sm"
-                  variant="danger"
-                  onClick={() => onDelete(mk.id)}
-                  className="text-xs"
-                >
-                  Hapus
-                </Button>
-              </td>
+              {canEdit || canDelete ? (
+                <td className="py-3 px-4 text-center whitespace-nowrap space-x-2">
+                  {canEdit && (
+                    <Button size="sm" variant="warning" onClick={() => onEdit(mk)} className="text-xs">
+                      Edit
+                    </Button>
+                  )}
+                  {canDelete && (
+                    <Button size="sm" variant="danger" onClick={() => onDelete(mk.id)} className="text-xs">
+                      Hapus
+                    </Button>
+                  )}
+                </td>
+              ) : null}
             </tr>
           ))}
         </tbody>

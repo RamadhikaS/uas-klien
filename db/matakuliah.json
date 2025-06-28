@@ -4,7 +4,6 @@
     "kodeMk": "IF201",
     "namaMk": "Dasar Pemrograman",
     "sks": 3, 
-    "semester": 1,
     "status": true
   },
   {
@@ -12,7 +11,6 @@
     "kodeMk": "IF202",
     "namaMk": "Struktur Data",
     "sks": 3, 
-    "semester": 2,
     "status": true
   },
   {
@@ -20,7 +18,6 @@
     "kodeMk": "MA101",
     "namaMk": "Kalkulus I",
     "sks": 4, 
-    "semester": 1,
     "status": true
   },
   {
@@ -28,7 +25,6 @@
     "kodeMk": "IF400",
     "namaMk": "Proyek Akhir",
     "sks": 6,
-    "semester": 8,
     "status": true
   }
 ]
