@@ -2,7 +2,7 @@ import AxiosInstance from "../AxiosInstance";
 
 export const loginApi = async (email, password) => {
   try {
-    const response = await AxiosInstance.get("/user", { params: { email } });
+    const response = await AxiosInstance.get("/pengguna", { params: { email } });
     const users = response.data;
 
     if (!users || users.length === 0) {
@@ -23,11 +23,11 @@ export const loginApi = async (email, password) => {
   
 };export const registerApi = async (userData) => {
   try {
-    const checkEmailResponse = await AxiosInstance.get("/user", { params: { email: userData.email } });
+    const checkEmailResponse = await AxiosInstance.get("/pengguna", { params: { email: userData.email } });
     if (checkEmailResponse.data && checkEmailResponse.data.length > 0) {
       throw new Error("Email sudah terdaftar. Silakan gunakan email lain.");
     }
-    const response = await AxiosInstance.post("/user", userData);
+    const response = await AxiosInstance.post("/pengguna", userData);
     return response.data;
   } catch (error) {
     console.error("Registration error:", error.message || error);
