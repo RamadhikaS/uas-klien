@@ -1,0 +1,14 @@
+[
+  {
+    "id": "1",
+    "mata_kuliah_id": "1",
+    "dosen_id": "1",
+    "mahasiswa_ids": ["1", "2", "3"]
+  },
+  {
+    "id": "2",
+    "mata_kuliah_id": "2",
+    "dosen_id": "2",
+    "mahasiswa_ids": []
+  }
+]

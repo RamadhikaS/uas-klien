@@ -1,0 +1,34 @@
+[
+  {
+    "id": "1",
+    "kodeMk": "IF201",
+    "namaMk": "Dasar Pemrograman",
+    "sks": 3, 
+    "semester": 1,
+    "status": true
+  },
+  {
+    "id": "2",
+    "kodeMk": "IF202",
+    "namaMk": "Struktur Data",
+    "sks": 3, 
+    "semester": 2,
+    "status": true
+  },
+  {
+    "id": "3",
+    "kodeMk": "MA101",
+    "namaMk": "Kalkulus I",
+    "sks": 4, 
+    "semester": 1,
+    "status": true
+  },
+  {
+    "id": "4", 
+    "kodeMk": "IF400",
+    "namaMk": "Proyek Akhir",
+    "sks": 6,
+    "semester": 8,
+    "status": true
+  }
+]

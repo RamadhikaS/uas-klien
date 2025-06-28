@@ -1,0 +1,26 @@
+[
+  {
+    "id": "1",
+    "nidn": "0012345001",
+    "namaDosen": "Dr. Retno Wulandari, M.Kom.",
+    "bidangKeahlian": "Rekayasa Perangkat Lunak",
+    "status": true,
+    "max_sks": 12
+  },
+  {
+    "id": "2",
+    "nidn": "0012345002",
+    "namaDosen": "Prof. Dr. Ir. Bambang Hartono",
+    "bidangKeahlian": "Kecerdasan Buatan",
+    "status": true,
+    "max_sks": 10
+  },
+  {
+    "id": "3",
+    "nidn": "0012345003",
+    "namaDosen": "Dr. Dewi Sartika, S.T., M.Eng.",
+    "bidangKeahlian": "Jaringan Komputer",
+    "status": false,
+    "max_sks": 14
+  }
+]
